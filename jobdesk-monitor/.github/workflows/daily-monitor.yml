@@ -1,0 +1,29 @@
+name: Daily Jobdesk Monitor
+
+on:
+  schedule:
+    - cron: "0 1 * * *"   # 01:00 UTC = 08:00 WIB (GitHub bisa terlambat beberapa menit)
+  workflow_dispatch:       # tombol "Run workflow" untuk tes manual
+    inputs:
+      dry_run:
+        description: "Dry run (tidak kirim email, hanya cetak di log)"
+        type: boolean
+        default: false
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Jalankan monitoring
+        env:
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+          MAIL_TO: ${{ secrets.MAIL_TO }}
+          REMINDER_DAYS: "2"
+          TIMEZONE: "Asia/Jakarta"
+          DRY_RUN: ${{ inputs.dry_run && '1' || '0' }}
+        run: python notify.py

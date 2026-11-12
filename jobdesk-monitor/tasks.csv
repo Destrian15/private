@@ -1,0 +1,6 @@
+id,jobdesk,pic,email_pic,prioritas,deadline,status,catatan
+1,Laporan penjualan mingguan,Andi,andi@example.com,Tinggi,2026-11-14,Proses,Tinggal finalisasi grafik
+2,Update data stok gudang,Sari,sari@example.com,Sedang,2026-11-11,Proses,Menunggu data dari gudang
+3,Rekap absensi bulanan,Budi,budi@example.com,Rendah,2026-11-20,Belum,
+4,Invoice klien November,Andi,andi@example.com,Tinggi,2026-11-12,Proses,
+5,Revisi SOP pengiriman,Sari,sari@example.com,Sedang,2026-11-05,Selesai,Sudah disetujui
